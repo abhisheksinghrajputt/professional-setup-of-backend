@@ -1,9 +1,20 @@
 import dotenv from "dotenv";
 import connectDB from "./db/db.js";
 
-dotenv.config();  // ✅ this loads .env
+dotenv.config({
+  path: './'}
+);  // ✅ this loads .env
 
-connectDB();
+connectDB()
+.then(()=>{
+  app.listen(process.env.PORT) || 4000,()=>{
+    console.log(`server is rinning at${process.env.PORT}`)
+  }
+})
+.catch((err)=>{
+  console.log("DB connection failed");
+  
+})
 
 
 
